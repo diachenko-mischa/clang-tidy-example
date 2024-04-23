@@ -1,0 +1,1 @@
+And example project with a lot of checks

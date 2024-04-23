@@ -1,5 +1,6 @@
 #include <array>
 #include <iostream>
+#include "table.h"
 
 struct Foobar {
  private:

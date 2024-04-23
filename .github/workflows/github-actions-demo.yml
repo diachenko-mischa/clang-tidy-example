@@ -9,5 +9,5 @@ jobs:
       - run: clang-format -n -Werror `find src -name '*.cpp'`
       - run: mkdir build
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-      - run: clang-tidy -p=build `find src -name '*.cpp'`
+      - run: clang-tidy -p=build `find src -name '*.cpp'` `find src -name '*.h'`
       - run: cmake --build build

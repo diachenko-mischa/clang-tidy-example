@@ -17,6 +17,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
   Linter:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: mkdir build
@@ -34,6 +35,7 @@ jobs:
         if: steps.linter.outputs.checks-failed > 0
         run: exit 1
   Build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: mkdir build

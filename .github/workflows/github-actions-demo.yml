@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: clang-format -n -Werror (find src -name '*.cpp')
+      - run: clang-format -n -Werror `find src -name '*.cpp'`
       - run: mkdir build
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-      - run: clang-tidy -p=build (find src -name '*.cpp')
+      - run: clang-tidy -p=build `find src -name '*.cpp'`
       - run: cmake --build build

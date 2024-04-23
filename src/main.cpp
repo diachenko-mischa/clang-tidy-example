@@ -1,7 +1,7 @@
 #include <array>
 #include <iostream>
 
-struct Foobar {
+struct f__Foobar {
  private:
   int m_helloField;
 };

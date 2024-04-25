@@ -67,20 +67,16 @@ jobs:
           recreate: true
           path: code-coverage-results.md
 
-      - uses: actions/upload-artifact@v3  # upload test results
+      - name: Upload gtest report
+        uses: actions/upload-artifact@v3  # upload test results
         if: success() || failure()        # run this step even if previous step failed
         with:
           name: gtest_report
           path: gtest_report.xml
 
-      - uses: actions/upload-artifact@v3  # upload test results
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3  # upload test results
         if: success() || failure()        # run this step even if previous step failed
         with:
           name: coverage
           path: coverage/
-
-      - uses: actions/upload-artifact@v3  # upload test results
-        if: success() || failure()        # run this step even if previous step failed
-        with:
-          name: cobertura-coverage-details
-          path: cobertura-coverage-details.xml

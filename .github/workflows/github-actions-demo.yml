@@ -19,8 +19,8 @@ jobs:
           cmake --build build
           ./build/src/main --gtest_output=xml:gtest_report.xml
           mkdir coverage
-          python3 -m gcovr --html-details coverage/coverage-details.html
           python3 -m gcovr --cobertura cobertura-coverage-details.xml
+          python3 -m gcovr --html-details coverage/coverage-details.html
       - uses: actions/upload-artifact@v3  # upload test results
           if: success() || failure()        # run this step even if previous step failed
           with:

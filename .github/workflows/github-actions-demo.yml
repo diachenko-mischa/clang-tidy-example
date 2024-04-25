@@ -14,8 +14,6 @@ jobs:
       
       - uses: ammaraskar/gcc-problem-matcher@master
 
-      - uses: root-project/gcc-problem-matcher-improved@v0.0.1-alpha.1
-
       - name: Install PIP packages
         run: pip install -r requirements.txt
 

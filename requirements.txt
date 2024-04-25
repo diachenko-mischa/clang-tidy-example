@@ -1,1 +1,1 @@
-gcovr
+gcovr==7.2

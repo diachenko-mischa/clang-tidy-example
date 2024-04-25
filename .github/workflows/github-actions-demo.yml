@@ -15,8 +15,9 @@ jobs:
       - name: Install PIP packages
         run: pip install -r requirements.txt
 
+      - uses: ammaraskar/gcc-problem-matcher@master
+
       - name: Check code formatting
-        uses: ammaraskar/gcc-problem-matcher@master
         run: clang-format -n -Werror `find src -name '*.cpp'`
 
       - name: Cmake Configure
@@ -25,11 +26,9 @@ jobs:
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
       - name: Run clang-tidy (Static analysis & Code style checks)
-        uses: ammaraskar/gcc-problem-matcher@master
-        run: clang-tidy -p=build `find src -name '*.cpp'` `find src -name '*.h'` | tee clang-tidy-report.txt
+        run: clang-tidy -p=build `find src -name '*.cpp'` `find src -name '*.h'`
 
       - name: Build
-        uses: ammaraskar/gcc-problem-matcher@master
         run: cmake --build build
 
       - name: Run unit tests

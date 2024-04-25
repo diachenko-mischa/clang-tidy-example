@@ -11,6 +11,7 @@ jobs:
           python-version: '3.x'
           cache: 'pip' # caching pip dependencies
       - run: |
+          pip install -r /path/to/requirements.txt
           clang-format -n -Werror `find src -name '*.cpp'`
           mkdir build
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

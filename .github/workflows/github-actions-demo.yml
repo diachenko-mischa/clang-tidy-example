@@ -13,12 +13,11 @@ jobs:
           cache: 'pip' # caching pip dependencies
       
       - uses: ammaraskar/gcc-problem-matcher@master
-      - uses: root-project/gcc-problem-matcher-improved@v1
+
+      - uses: root-project/gcc-problem-matcher-improved@v0.0.1-alpha.1
 
       - name: Install PIP packages
         run: pip install -r requirements.txt
-
-      
 
       - name: Check code formatting
         run: clang-format -n -Werror `find src -name '*.cpp'`

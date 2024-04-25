@@ -11,11 +11,13 @@ jobs:
         with:
           python-version: '3.x'
           cache: 'pip' # caching pip dependencies
+      
+      - uses: ammaraskar/gcc-problem-matcher@master
 
       - name: Install PIP packages
         run: pip install -r requirements.txt
 
-      - uses: ammaraskar/gcc-problem-matcher@master
+      
 
       - name: Check code formatting
         run: clang-format -n -Werror `find src -name '*.cpp'`

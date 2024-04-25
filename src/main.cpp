@@ -5,12 +5,12 @@
 
 struct Foobar {
  public:
-  explicit Foobar(int value) : mhelloField(value) {}
+  explicit Foobar(int value) : _helloField(value) {}
 
-  [[nodiscard]] int value() const { return mhelloField; }
+  [[nodiscard]] int value() const { return _helloField; }
 
  private:
-  int mhelloField;
+  int _helloField;
 };
 
 TEST(Foobar, goodTest) {

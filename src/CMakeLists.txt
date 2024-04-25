@@ -29,4 +29,6 @@ find_package(SQLite3 REQUIRED CONFIG)
 
 set(CMAKE_CXX_STANDARD 20)
 add_executable(main main.cpp)
-target_link_libraries(main SQLite3)
+target_link_libraries(main SQLite3 GTest::gtest_main)
+target_compile_options(main PRIVATE --coverage)
+target_link_options(main PRIVATE --coverage)

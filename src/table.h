@@ -1,5 +1,5 @@
 #include <string>
 
-struct table {
+struct Table {
   void methodA() {}
 };

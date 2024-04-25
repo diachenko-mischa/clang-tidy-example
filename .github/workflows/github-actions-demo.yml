@@ -10,16 +10,17 @@ jobs:
         with:
           python-version: '3.x'
           cache: 'pip' # caching pip dependencies
-      - run: pip install gcovr
-      - run: clang-format -n -Werror `find src -name '*.cpp'`
-      - run: mkdir build
-      - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-      - run: clang-tidy -p=build `find src -name '*.cpp'` `find src -name '*.h'`
-      - run: cmake --build build
-      - run: ./build/src/main --gtest_output=xml:gtest_report.xml
-      - run: mkdir coverage
-      - run: python3 -m gcovr --html-details coverage/coverage-details.html
-      - run: python3 -m gcovr --cobertura cobertura-coverage-details.xml
+      - run: |
+          pip install gcovr
+          clang-format -n -Werror `find src -name '*.cpp'`
+          mkdir build
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          clang-tidy -p=build `find src -name '*.cpp'` `find src -name '*.h'`
+          cmake --build build
+          ./build/src/main --gtest_output=xml:gtest_report.xml
+          mkdir coverage
+          python3 -m gcovr --html-details coverage/coverage-details.html
+          python3 -m gcovr --cobertura cobertura-coverage-details.xml
       - uses: actions/upload-artifact@v3  # upload test results
           if: success() || failure()        # run this step even if previous step failed
           with:

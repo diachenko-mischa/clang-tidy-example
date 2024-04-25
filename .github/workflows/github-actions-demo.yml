@@ -22,17 +22,17 @@ jobs:
           python3 -m gcovr --cobertura cobertura-coverage-details.xml
           python3 -m gcovr --html-details coverage/coverage-details.html
       - uses: actions/upload-artifact@v3  # upload test results
-          if: success() || failure()        # run this step even if previous step failed
-          with:
-            name: gtest_report
-            path: gtest_report.xml
+        if: success() || failure()        # run this step even if previous step failed
+        with:
+          name: gtest_report
+          path: gtest_report.xml
       - uses: actions/upload-artifact@v3  # upload test results
-                if: success() || failure()        # run this step even if previous step failed
-                with:
-                  name: coverage
-                  path: coverage/
+        if: success() || failure()        # run this step even if previous step failed
+        with:
+          name: coverage
+          path: coverage/
       - uses: actions/upload-artifact@v3  # upload test results
-                if: success() || failure()        # run this step even if previous step failed
-                with:
-                  name: cobertura-coverage-details
-                  path: cobertura-coverage-details.xml
+        if: success() || failure()        # run this step even if previous step failed
+        with:
+          name: cobertura-coverage-details
+          path: cobertura-coverage-details.xml

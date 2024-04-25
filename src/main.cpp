@@ -1,14 +1,21 @@
+#include <gtest/gtest.h>
 #include <array>
 #include <iostream>
+#include "table.h"
 
 struct Foobar {
+ public:
+  explicit Foobar(int value) : _helloField(value) {}
+
+  [[nodiscard]] int value() const { return _helloField; }
+
  private:
-  int m_helloField;
+  int _helloField;
 };
 
-int main(int argc, char** argv) {
-  constexpr auto ARRAY_SIZE = 100;
-  std::array<int, ARRAY_SIZE> array;
-  std::cout << "Hello world" << std::endl;
-  return 0;
+TEST(Foobar, goodTest) {
+  using ::testing::Eq;
+  constexpr auto EXPECTED_VALUE = 10;
+  const auto foobar = Foobar{EXPECTED_VALUE};
+  EXPECT_EQ(foobar.value(), EXPECTED_VALUE);
 }
